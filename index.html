@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SanitizerAI Enterprise :: Command Workspace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- DESKTOP SIDEBAR -->
+    <nav class="desktop-sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-mark">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="url(#grad1)"/>
+                    <path d="M8 16 L14 22 L24 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="0" y1="0" x2="32" y2="32">
+                            <stop offset="0%" stop-color="#6366f1"/>
+                            <stop offset="100%" stop-color="#0ea5e9"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <span class="logo-name">SanitizerAI</span>
+                <span class="logo-badge">ENTERPRISE</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section-label">MODULES</div>
+        <div class="nav-group">
+            <button class="nav-btn active" data-target="intake-app">
+                <span class="nav-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </span>
+                Document Ingestion
+            </button>
+            <button class="nav-btn" data-target="ledger-app">
+                <span class="nav-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </span>
+                Central Ledger
+            </button>
+            <button class="nav-btn" data-target="payout-app">
+                <span class="nav-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </span>
+                EFT Batch Pay
+            </button>
+            <button class="nav-btn" data-target="invoice-app">
+                <span class="nav-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </span>
+                Invoice Generator
+            </button>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="status-dot-wrapper">
+                <span class="status-dot"></span>
+                <span class="status-label">System Online</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN WORKSPACE -->
+    <main class="main-workspace">
+
+        <!-- ============ SCREEN 1: INTAKE ============ -->
+        <section id="intake-app" class="app-screen active-screen">
+            <div class="screen-header">
+                <div class="header-chip">APP 01</div>
+                <h2>Capture Dashboard</h2>
+                <p>Extract invoice sheets or messaging logs instantly via upload or text dump.</p>
+            </div>
+            <div class="card">
+                <label for="file-input" class="upload-zone" id="upload-zone">
+                    <div class="upload-icon-wrap">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <strong>Snap or Drop Receipt Photo</strong>
+                    <span class="upload-sub">JPG, PNG, HEIC accepted · Max 10MB</span>
+                    <input type="file" id="file-input" accept="image/*">
+                </label>
+
+                <div class="divider-text">or paste a text message log</div>
+
+                <textarea id="text-input" class="text-input" placeholder="Example: Sipho here, total outstanding is R3200 for plumbing. Bank FNB."></textarea>
+                <button class="btn-action" id="process-btn">
+                    <span>Process &amp; Extract</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- ============ SCREEN 2: LEDGER ============ -->
+        <section id="ledger-app" class="app-screen">
+            <div class="screen-header">
+                <div class="header-chip">APP 02</div>
+                <h2>Audited Ledger</h2>
+                <p>Central clean registry tracking all contractor details and payment status.</p>
+            </div>
+            <div class="card">
+                <div id="records-list-target">
+                    <!-- Seed record -->
+                    <div class="mobile-record-card" data-name="Alex J" data-cost="R2,800.00" data-bank="CAPITEC">
+                        <div class="card-row-top">
+                            <span class="target-name">Alex J</span>
+                            <span class="price-text target-cost">R2,800.00</span>
+                        </div>
+                        <div class="card-details-row">
+                            <span>14 units logged</span>
+                            <span class="bank-tag">CAPITEC</span>
+                        </div>
+                        <button class="btn-invoice-route" onclick="generateInvoiceMock('Alex J', 'R2,800.00', 'CAPITEC')">Generate Invoice →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SCREEN 3: EFT PAYOUT ============ -->
+        <section id="payout-app" class="app-screen">
+            <div class="screen-header">
+                <div class="header-chip">APP 03</div>
+                <h2>EFT Clearing Batches</h2>
+                <p>Unpaid queue items automatically grouped by banking institution.</p>
+            </div>
+
+            <div class="bank-category-block">
+                <div class="bank-header capitec">
+                    <div class="bank-header-left">
+                        <span class="bank-dot capitec-dot"></span>
+                        <span>CAPITEC SYSTEM QUEUE</span>
+                    </div>
+                    <button class="btn-csv" onclick="downloadCSV('capitec')">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download CSV
+                    </button>
+                </div>
+                <div class="bank-queue-list" id="queue-capitec">
+                    <div class="mini-recipient-row">
+                        <div class="recipient-info">
+                            <strong>Alex J</strong>
+                            <span class="recipient-meta">CAPITEC · Pending</span>
+                        </div>
+                        <div class="recipient-amount">R2,800.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bank-category-block">
+                <div class="bank-header fnb">
+                    <div class="bank-header-left">
+                        <span class="bank-dot fnb-dot"></span>
+                        <span>FNB SYSTEM QUEUE</span>
+                    </div>
+                    <button class="btn-csv" onclick="downloadCSV('fnb')">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download CSV
+                    </button>
+                </div>
+                <div class="bank-queue-list" id="queue-fnb">
+                    <div class="empty-queue-msg">No pending FNB items</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SCREEN 4: INVOICE ============ -->
+        <section id="invoice-app" class="app-screen">
+            <div class="screen-header">
+                <div class="header-chip">APP 04</div>
+                <h2>Invoice Generator</h2>
+                <p>Convert verified system rows into client-facing invoice documentation.</p>
+            </div>
+
+            <div class="invoice-paper-mock" id="invoice-printable">
+                <div class="invoice-brand-header">
+                    <div class="invoice-logo-area">
+                        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="7" fill="url(#grad2)"/>
+                            <path d="M8 16 L14 22 L24 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="grad2" x1="0" y1="0" x2="32" y2="32">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#0ea5e9"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div>
+                            <div class="inv-company-name">SanitizerAI Enterprise</div>
+                            <div class="inv-company-sub">Verified Payment Intelligence</div>
+                        </div>
+                    </div>
+                    <div class="invoice-meta-right">
+                        <div class="inv-label">TAX INVOICE</div>
+                        <div class="inv-number" id="inv-number">INV-2026-0041</div>
+                        <div class="inv-date" id="inv-date"></div>
+                    </div>
+                </div>
+
+                <div class="invoice-divider"></div>
+
+                <div class="invoice-parties">
+                    <div class="invoice-party">
+                        <div class="party-label">PREPARED FOR</div>
+                        <div class="party-name" id="inv-client-target">Alex J</div>
+                        <div class="party-sub">Verified Contractor</div>
+                    </div>
+                    <div class="invoice-party right">
+                        <div class="party-label">ISSUED BY</div>
+                        <div class="party-name">SanitizerAI</div>
+                        <div class="party-sub">Enterprise Division</div>
+                    </div>
+                </div>
+
+                <table class="invoice-line-items">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Bank</th>
+                            <th class="text-right">Amount Due</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="inv-desc-field">Contractor service items parsed via secure operational system channel logging</td>
+                            <td id="inv-bank-field">CAPITEC</td>
+                            <td class="text-right amount-cell" id="inv-price-field">R2,800.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="invoice-total-row">
+                    <span>TOTAL SETTLEMENT VALUE</span>
+                    <span class="total-amount" id="inv-total-field">R2,800.00</span>
+                </div>
+
+                <div class="invoice-footer-note">
+                    Generated by SanitizerAI Enterprise · Confidential Financial Document
+                </div>
+            </div>
+
+            <div class="invoice-btn-grid">
+                <button class="btn-export btn-pdf" id="btn-pdf-download">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download PDF
+                </button>
+                <button class="btn-export btn-whatsapp" onclick="triggerWhatsAppSend()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    WhatsApp
+                </button>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-nav-bar">
+    <button id="tab-intake-app" class="mobile-tab active" data-target="intake-app">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Scanner</span>
+    </button>
+    <button id="tab-ledger-app" class="mobile-tab" data-target="ledger-app">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span>Ledger</span>
+    </button>
+    <button id="tab-payout-app" class="mobile-tab" data-target="payout-app">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span>EFT Pay</span>
+    </button>
+    <button id="tab-invoice-app" class="mobile-tab" data-target="invoice-app">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span>Invoices</span>
+    </button>
+</nav>
+
+<!-- Load jsPDF for real PDF export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
